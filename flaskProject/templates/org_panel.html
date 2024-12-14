@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Вкладки</title>
+    <link rel="stylesheet" type="text/css" href="/static/org_panel.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/tabs.js"></script>
+</head>
+<body>
+
+<div class="combined-container">
+    <div id="tabs-container">
+        <button class="tab" onclick="openTab('tab1')">Информация о транзакциях</button>
+        <button class="tab" onclick="openTab('tab2')">Информация о пользователях</button>
+        <button class="tab" onclick="openTab('tab3')">Импорт/Экспорт</button>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var tabs = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = "none";
+            }
+
+            var buttons = document.getElementsByClassName("tab");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.classList.add("active");
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            openTab("tab1");
+        });
+
+        // Modal functions
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                closeModal();
+            }
+        }
+
+        function addData() {
+            const form = document.getElementById('dataForm');
+            const newRow = document.createElement('tr');
+            const formData = new FormData(form);
+
+            // Create cells for the new row
+            const amount = formData.get('amount');
+            const transactionType = formData.get('transactionType');
+            let cells = `<td>${amount}</td><td>${transactionType}</td>`;
+            cells += `<td class="button-cell"><button class="delete button">Удалить</button></td>`;
+
+            newRow.innerHTML = cells;
+
+            document.querySelector('#table1 tbody').appendChild(newRow);
+            closeModal();
+        }
+    </script>
+
+    <div class="container">
+        <div id="tab1" class="tab-content">
+            <table id="table1">
+                <thead>
+                    <tr>
+                        <th>ID Транзакции</th>
+                        <th>Дата</th>
+                        <th>Сумма транзакции</th>
+                        <th>Номер счёта организации</th>
+                        <th>ID Типа транзакции</th>
+                        <th>Тип транзакции</th>
+                        <th>Остаток</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            {% for cell in row %}
+                                <td contenteditable="true">{{ cell }}</td>
+                            {% endfor %}
+                            <td class="button-cell"><button class="delete button">Удалить</button></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="button-group">
+                <button id="submit" class="button">Применить</button>
+                <button id="add" class="button" onclick="openModal()">Добавить</button>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <table id="table2">
+                <thead>
+                    <tr>
+                        <th>ID Пользователя</th>
+                        <th>Почта</th>
+                        <th>Пароль</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in user_data %}
+                        <tr>
+                            {% for cell in row %}
+                                <td contenteditable="true">{{ cell }}</td>
+                            {% endfor %}
+                            <td class="button-cell"><button class="deleteUser button">Удалить</button></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="button-group">
+                <button id="submitUser" class="button">Применить</button>
+                <button id="addUser" class="button" onclick="openUserModal()">Добавить</button>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <table id="table3">
+                <thead>
+                    <tr>
+                        <th>ID Транзакции</th>
+                        <th>Дата</th>
+                        <th>Сумма транзакции</th>
+                        <th>Номер счёта организации</th>
+                        <th>ID Типа транзакции</th>
+                        <th>Тип транзакции</th>
+                        <th>Остаток</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            {% for cell in row %}
+                                <td contenteditable="true">{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="button-group">
+                <button id="import" class="button" onclick="document.getElementById('fileInput').click();">Импорт</button>
+                <input type="file" id="fileInput" style="display: none;" onchange="handleFileImport(event);">
+
+                <button id="export" class="button" onclick="exportFiles();">Экспорт</button>
+            </div>
+        </div>
+
+        <!-- Modal for adding data -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Добавить данные</h2>
+                <form id="dataForm" onsubmit="return false;"> <!-- Prevent form submission -->
+                    <label>Сумма транзакции:</label>
+                    <input type="number" name="amount" required min="0"><br>
+                    <label>Тип транзакции:</label>
+                    <select name="transactionType" required>
+                        <option value="">Выберите тип</option>
+                        <option value="1">Поступление</option>
+                        <option value="2">Списание</option>
+                    </select><br>
+                    <button type="button" onclick="addData()">Добавить</button>
+                </form>
+            </div>
+        </div>
+       <div id="myUserModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeUserModal()">&times;</span>
+                <h2>Добавить пользователя</h2>
+                <form id="userForm" onsubmit="return false;"> <!-- Prevent form submission -->
+                    <label>Email:</label>
+                    <input type="email" name="email" required><br>
+                    <label>Пароль:</label>
+                    <input type="password" name="password" required minlength="6"><br>
+                    <button type="button" onclick="addUserData()">Добавить</button>
+                </form>
+            </div>
+       </div>
+
+
+        <script src="/static/tab1.js"></script>
+        <script src="/static/tab2.js"></script>
+        <script src="/static/tab3.js"></script>
+        <script src="/static/sort.js"></script>
+        <script src="/static/Export.js"></script>
+    </div>
+</div>
+
+</body>
+</html>

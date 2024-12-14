@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Пользовательска панель</title>
+    <link rel="stylesheet" type="text/css" href="/static/user_panel.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.0/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/docx@9.1.0/build/index.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="tab" class="tab-content">
+            <table id="table3">
+                <thead>
+                    <tr>
+                        <th>ID Транзакции</th>
+                        <th>Дата</th>
+                        <th>Сумма транзакции</th>
+                        <th>Номер счёта организации</th>
+                        <th>ID Типа транзакции</th>
+                        <th>Тип транзакции</th>
+                        <th>Остаток</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            {% for cell in row %}
+                                <td >{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="button-group">
+                <button id="report">Сформировать Отчёт(Excel)</button>
+                <button id="reportword">Сформировать Отчёт(Word)</button>
+                <button id="reportchart">Сформировать График</button>
+            </div>
+        </div>
+    </div>
+    <div id="chartContainer" class="container" style="margin-top: 20px; display: none;">
+        <div class="tab-content">
+            <canvas id="myChart"></canvas>
+            <div class="button-group">
+                <button id="DownloadChart">Скачать График</button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/downloadchart.js"></script>
+    <script src="/static/reportword.js"></script>
+    <script src="/static/reportchart.js"></script>
+    <script src="/static/report.js"></script>
+    <script src="/static/sort.js"></script>
+</body>
+</html>

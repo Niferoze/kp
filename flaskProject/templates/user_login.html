@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Вход в систему</title>
+    <link rel="stylesheet" type="text/css" href="/static/login.css">
+</head>
+<body>
+    <div class="panel">
+        <h1>Вход в систему</h1>
+        <form method="POST">
+            <div class="input-field">
+                <input type="email" id="email" name="email" required placeholder="Email:">
+
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" name="password" required placeholder="Пароль:">
+            </div>
+            <input type="submit" value="Войти">
+        </form>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

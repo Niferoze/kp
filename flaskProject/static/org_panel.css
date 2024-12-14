@@ -1,0 +1,215 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #333; /* Dark gray text */
+    margin: 0;
+    padding: 20px;
+}
+
+.combined-container {
+    max-width: 1000px;
+    margin: auto;
+    background: white; /* White background for the content */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+#tabs-container {
+    margin-bottom: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background-color: #ddd; /* Light gray for tabs */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    flex-grow: 1; /* Make buttons take equal space */
+    margin: 0 5px; /* Space between buttons */
+}
+
+.tab.active {
+    background-color: #333; /* Dark gray for active tab */
+    color: white; /* White text for active tab */
+}
+
+.tab-content {
+    display: none; /* Hide tab content by default */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc; /* Light gray border */
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #eee; /* Light gray for header */
+}
+
+.button-group {
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #333; /* Dark gray button */
+    color: white; /* White text for buttons */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #555; /* Darker gray on hover */
+}
+
+.button-cell {
+    text-align: center;
+}
+
+
+.file-button {
+    background-color: #333; /* Темно-серый фон */
+    color: white; /* Белый текст */
+    border: none;
+    padding: 7px 15px; /* Убедитесь, что отступы такие же, как у других кнопок */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    transform: translateY(2px);
+}
+
+.file-button:hover {
+    background-color: #555; /* Более темный серый при наведении */
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px; /* Location of the box */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Notification Modal styles */
+#notificationModal .modal-content {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    padding-top: 60px; /* Location of the box */
+}
+
+.modal-content {
+    background-color: white; /* Match the content area */
+    margin: 5% auto; /* Center the modal */
+    padding: 20px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 40%; /* Adjust width as needed */
+}
+
+/* Close button */
+.close {
+    color: #aaa; /* Gray color */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Dark gray on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column; /* Stack labels and inputs */
+}
+
+form label {
+    margin: 10px 0 5px; /* Spacing for labels */
+}
+
+form input,
+form select {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners for inputs */
+}
+
+button {
+    margin-top: 15px; /* Spacing for the button */
+    background-color: #333; /* Dark gray background for buttons */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px; /* Padding for buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition effect */
+}
+
+button:hover {
+    background-color: #555; /* Darker gray on hover */
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация организации</title>
+    <link rel="stylesheet" type="text/css" href="/static/reg.css">
+</head>
+<body>
+    <div class="panel">
+        <h1>Регистрация организации</h1>
+        <form method="POST">
+            <div class="input-field">
+                <input type="text" id="orgName" name="orgName" required placeholder="Название организации">
+            </div>
+            <div class="input-field">
+                <input type="email" id="email" name="email" required placeholder="Email:">
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" name="password" required placeholder="Пароль">
+            </div>
+            <div class="input-field">
+                <input type="text" id="city" name="city" required placeholder="Город">
+            </div>
+            <div class="input-field">
+                <input type="text" id="accountDetails" name="accountDetails" required placeholder="Реквизиты счёта">
+            </div>
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

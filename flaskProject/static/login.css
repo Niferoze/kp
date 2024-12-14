@@ -1,0 +1,50 @@
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .panel {
+            max-width: 330px;
+            margin: 100px auto; /* Центрирование блока */
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .input-field {
+            margin: 10px 8%; /* Пространство между полями ввода */
+        }
+
+        input[type="email"],
+        input[type="password"]{
+            width: 90%; /* Поля ввода занимают всю ширину */
+            padding: 15px; /* Отступы внутри полей ввода */
+            border: 1px solid #ccc; /* Рамка для полей ввода */
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 40%; /* Кнопка занимает всю ширину */
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        p {
+            color: red; /* Цвет сообщения об ошибке */
+        }
